@@ -1,15 +1,15 @@
 package com.company;
 
+import Employees.Employee;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList <String> funcionariosNome = new ArrayList<>() ;
-        ArrayList <String> funcionariosEndereco = new ArrayList<>() ;
-        ArrayList <String> funcionariosTipo = new ArrayList<>() ;
-        ArrayList <String> funcionarioscpf = new ArrayList<>();
+        ArrayList <Employee> employees = new ArrayList<>();
+        Employee example = new Employee("algo", "onde moro", 2);
 
         boolean run = true;
         while(run){
@@ -27,10 +27,9 @@ public class Main {
                 "Para mudar agenda de pagamento digite 10;\n" +
                 "Para criar nova agenda de pagamento digite 11;\n" +
                 "para sair digite 12;\n");
-        System.out.println(funcionariosNome+ "\n");
-            System.out.println(funcionariosEndereco+ "\n");
-            System.out.println(funcionariosTipo+ "\n");
-            System.out.println(funcionarioscpf+ "\n");
+            for (int i = 0; i < employees.size(); i++) {
+                employees.get(i).printEmployee();
+            }
         Scanner scanner = new Scanner(System.in);
 
         int escolhaNumerica = scanner.nextInt();
@@ -40,11 +39,10 @@ public class Main {
             case 1:
                 System.out.println("Digite o nome do funcionário:");
                 String nome = scanner.next();
-                funcionariosNome.add(nome);
+
 
                 System.out.print("Digite o endereço do funcionário " + nome + " :\n");
                 String endereco = scanner.next();
-                funcionariosEndereco.add(endereco);
                 while(true){
                     System.out.print("Digite o tipo do funcionário " + nome + " :\n" +
                             "Horista 1\n" +
@@ -52,18 +50,18 @@ public class Main {
                             "Comissionado 3\n");
                     int tipo = scanner.nextInt();
                     if(tipo == 1){
-                        funcionariosTipo.add("hourly");
+                        employees.add(new Employee(nome, endereco, employees.size()));
                         break;
                     }
                     else if(tipo == 2){
-                        funcionariosTipo.add("salaried");
+                        employees.add(new Employee(nome, endereco, employees.size()));
                         break;
                     }
                     else if(tipo == 3){
-                        funcionariosTipo.add("commisioned");
+                        employees.add(new Employee(nome, endereco, employees.size()));
                         break;
                     }
-
+                    System.out.println();
                 }
 
 
@@ -101,9 +99,7 @@ public class Main {
             case 12:
                 run = false;
                 break;
-
             }
         }
     }
-
 }
