@@ -9,26 +9,29 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList <Employee> employees = new ArrayList<>();
-        Employee example = new Employee("algo", "onde moro", 2);
+        //Employee example = new Employee("algo", "onde moro", 2);
 
         boolean run = true;
         while(run){
         System.out.println("foi");
-        System.out.print("Sistema folha de pagamento, para:\n" +
-                "Adicionar um empregado digite 1;\n" +
-                "Para remover um empregado digite 2;\n" +
-                "Para lançar um cartão de ponto digite 3;\n" +
-                "Para lançar um resultado de venda digiter 4;\n" +
-                "Para lançar uma taxa de serviço, digite 5;\n" +
-                "Para alterar detalhes de um empregado, digite 6;\n" +
-                "Para rodar folha de pagamento para hoje 7;\n" +
-                "Para dar 'undo' digite 8;\n" +
-                "Para dar 'redo' digite 9;\n" +
-                "Para mudar agenda de pagamento digite 10;\n" +
-                "Para criar nova agenda de pagamento digite 11;\n" +
-                "para sair digite 12;\n");
-            for (int i = 0; i < employees.size(); i++) {
-                employees.get(i).printEmployee();
+        System.out.print("""
+                Sistema folha de pagfgedfgsdfgsdgsdfgdfamento, para:
+                Adicionar um empregado digite 1;
+                Para remover um empregado digite 2;
+                Para lançar um cartão de ponto digite 3;
+                Para lançar um resultado de venda digiter 4;
+                Para lançar uma taxa de serviço, digite 5;
+                Para alterar detalhes de um empregado, digite 6;
+                Para rodar folha de pagamento para hoje 7;
+                Para dar 'undo' digite 8;
+                Para dar 'redo' digite 9;
+                Para mudar agenda de pagamento digite 10;
+                Para criar nova agenda de pagamento digite 11;
+                para sair digite 12;
+                """);
+
+            for (Employee employee : employees) {
+                employee.printEmployee();
             }
         Scanner scanner = new Scanner(System.in);
 
