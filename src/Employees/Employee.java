@@ -1,17 +1,17 @@
 package Employees;
 
 public class Employee {
-    String name;
-    String address;
-    int id;
+    public String name;
+    public String address;
+    public String cpf;
 
-    public Employee(String name, String address, int id){
-        this.name = name;
-        this.address = address;
-        this.id = id;
+    public Employee(String _name, String _address, String _cpf){
+        this.name = _name;
+        this.address = _address;
+        this.cpf = _cpf;
     }
 
     public void printEmployee() {
-        System.out.print("[ " + this.name + ", " + this.address + ", " + this.id + " ]");
+        System.out.print("[ " + this.name + ", " + this.address + ", " + this.cpf + " ]");
     }
 }
