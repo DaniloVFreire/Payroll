@@ -2,21 +2,21 @@
 [![Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
 [![Badge](https://img.shields.io/static/v1?label=State&message=Inprogress&color=yellow&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
 ---
-##table of contents  
+## table of contents  
 
 1. [Introduction](#Introduction)
 2. [Project functionalities](#Project functionalities)
 3. [UML Diagram](#UML Diagram)
 4. [License](#License)
 
-##Introduction  
+## Introduction  
 
 The **payroll system** project is being developed in the **Java** language
 and **Intellij IDEA**, the project objective is to **apply the
 concepts of OOP** (Object-Oriented Programming) learned in
 the programming 2 discipline.
 ---
-##Project functionalities  
+## Project functionalities  
 
 The project structure is focused on **simulating
 a corporate payroll system** that includes:  
@@ -35,10 +35,10 @@ a corporate payroll system** that includes:
 |    10    |  Create a new payment Schedule |:white_large_square
 ---
 
-##UML Diagram  
+## UML Diagram  
 
 ![UML Diagram](UML%20Diagram.png)
 
-##License  
+## License  
     
 [MIT](https://choosealicense.com/licenses/mit/)
