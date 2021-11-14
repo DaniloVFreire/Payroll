@@ -5,6 +5,8 @@ import Employees.Employee;
 import Employees.Hourly;
 import Employees.Salaried;
 
+import Interface.TextMenu;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,7 +40,7 @@ public class Main {
                 """);
 
             for (Employee employee : employees) {
-                employee.printEmployee();
+                employee.print();
             }
             System.out.println();
 

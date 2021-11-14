@@ -11,7 +11,7 @@ public class Employee {
         this.cpf = _cpf;
     }
 
-    public void printEmployee() {
+    public void print() {
         System.out.print("[ " + this.name + ", " + this.address + ", " + this.cpf + " ]");
     }
 }
