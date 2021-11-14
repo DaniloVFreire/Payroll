@@ -10,7 +10,6 @@
 4. [License](#License)
 
 ## Introduction  
-
 The **payroll system** project is being developed in the **Java** language
 and **Intellij IDEA**, the project objective is to **apply the
 concepts of OOP** (Object-Oriented Programming) learned in
