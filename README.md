@@ -7,7 +7,6 @@
 1. [Introduction](#introduction)
 2. [Project functionalities](#project-functionalities)
 3. [UML Diagram](#uml-diagram)
-4. [License](#license)
 
 ## Introduction
 
@@ -39,6 +38,3 @@ a corporate payroll system** that includes:
 
 ![UML Diagram](UML%20Diagram.png)
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)

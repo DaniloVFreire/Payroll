@@ -8,6 +8,7 @@ public class Commissioned extends Employee {
         super(_name, _address, _cpf);
     }
     public void pay(){
+
         System.out.println("The employee " + this.name +" has been payed");
     }
 }
