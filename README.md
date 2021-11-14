@@ -1,13 +1,13 @@
 # Payroll P2 project
 [![Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
 [![Badge](https://img.shields.io/static/v1?label=State&message=Inprogress&color=yellow&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
----
 ## table of contents  
-
-1. [Introduction](#Introduction)
-2. [Project functionalities](#Project functionalities)
-3. [UML Diagram](#UML Diagram)
-4. [License](#License)
+  
+  
+1. [Introduction](#introduction)
+2. [Project functionalities](#project-functionalities)
+3. [UML Diagram](#uml-diagram)
+4. [License](#license)
 
 ## Introduction  
 
