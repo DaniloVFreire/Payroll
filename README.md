@@ -1,6 +1,6 @@
 # Payroll P2 project
 [![Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
-[![Badge](https://img.shields.io/static/v1?label=State&message=Inprogress&color=yellow&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll)
+[![Badge](https://img.shields.io/static/v1?label=State&message=Inprogress&color=yellow&style=for-the-badge&logo=GITHUB)](https://github.com/DaniloVFreire/Payroll/blob/main/LICENSE)
 ## table of contents
 
 
@@ -24,7 +24,7 @@ a corporate payroll system** that includes:
 | :--------: | :-------------------------------:| :---------:|     
 |     1    |  Add an employee               |:white_check_mark:
 |     2    |  Remove an employee            |:white_check_mark:
-|     3    |  Post a time card              |:white_large_square:
+|     3    |  Post a time card              |:white_check_mark:
 |     4    |  Post sales result             |:white_large_square:
 |     5    |  Post a service tax            |:white_large_square:
 |     6    |  Update employee details       |:white_large_square:

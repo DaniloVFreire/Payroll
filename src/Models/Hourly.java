@@ -1,4 +1,4 @@
-package Employees;
+package Models;
 
 public class Hourly extends Employee {
     private double salary;
@@ -23,7 +23,20 @@ public class Hourly extends Employee {
             System.out.println("Error, the time should be positive!");
         }
     }
+
+
+    public void setPaymentTax(double _paymentTax){
+        if (_paymentTax>0){
+            this.paymentTax = _paymentTax;
+        }
+    }
+
     public void pay(){
         System.out.println("The employee " + this.name +" has been payed");
+    }
+
+    @Override
+    public String toString(){
+        return super.name+ " " + super.address + " " +super.cpf;
     }
 }

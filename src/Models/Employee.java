@@ -1,6 +1,6 @@
-package Employees;
+package Models;
 
-public class Employee {
+public abstract class Employee {
     public String name;
     public String address;
     public String cpf;
@@ -13,5 +13,10 @@ public class Employee {
 
     public void print() {
         System.out.print("[ " + this.name + ", " + this.address + ", " + this.cpf + " ]");
+    }
+
+    @Override
+    public String toString(){
+        return this.name + this.address + this.cpf;
     }
 }
