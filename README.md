@@ -25,7 +25,7 @@ a corporate payroll system** that includes:
 |     1    |  Add an employee               |:white_check_mark:
 |     2    |  Remove an employee            |:white_check_mark:
 |     3    |  Post a time card              |:white_check_mark:
-|     4    |  Post sales result             |:white_large_square:
+|     4    |  Post sales result             |:white_check_mark:
 |     5    |  Post a service tax            |:white_large_square:
 |     6    |  Update employee details       |:white_large_square:
 |     7    |  Run today's payroll           |:white_large_square:

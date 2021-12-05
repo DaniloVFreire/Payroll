@@ -1,4 +1,4 @@
-package Models;
+package Models.employees;
 
 public class Hourly extends Employee {
     private double salary;
@@ -9,14 +9,14 @@ public class Hourly extends Employee {
         this.paymentTax = 100.00;
     }
 
-    public void postTimeCard(int horasTrabalhadas){
-        if(horasTrabalhadas>=0){
-            if (horasTrabalhadas <= 8){
-                this.salary += paymentTax * horasTrabalhadas;
+    public void postTimeCard(int workedHours){
+        if(workedHours>=0){
+            if (workedHours <= 8){
+                this.salary += paymentTax * workedHours;
             }
             else{
                 this.salary += paymentTax * 8;
-                this.salary += (paymentTax * 1.5) * (horasTrabalhadas - 8);
+                this.salary += (paymentTax * 1.5) * (workedHours - 8);
             }
         }
         else{
@@ -32,11 +32,11 @@ public class Hourly extends Employee {
     }
 
     public void pay(){
-        System.out.println("The employee " + this.name +" has been payed");
+        System.out.println("The employee " + this.getName() +" has been payed");
     }
 
     @Override
     public String toString(){
-        return super.name+ " " + super.address + " " +super.cpf;
+        return super.getName()+ " " + super.getAddress() + " " +super.getCpf();
     }
 }

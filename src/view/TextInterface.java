@@ -1,13 +1,14 @@
 package view;
 
-import Models.Commissioned;
-import Models.Employee;
-import Models.Hourly;
-import Models.Salaried;
+import Models.employees.Commissioned;
+import Models.employees.Employee;
+import Models.employees.Hourly;
+import Models.employees.Salaried;
 
 import java.util.Scanner;
 import java.util.Stack;
 
+import controller.EmployeesController;
 import data.DataManager;
 
 public class TextInterface {
@@ -19,6 +20,7 @@ public class TextInterface {
         Scanner scanner = new Scanner(System.in);
         String input;
         int intInput;
+        double doubleInput;
         while (true) {
             showFunctionalities();
             switch (scanner.nextInt()) {
@@ -41,7 +43,7 @@ public class TextInterface {
                         String cpf = scanner.next();
                         int flag=0;
                         for (Employee employee : data.employees) {
-                            if (employee.cpf==cpf){
+                            if (employee.getCpf().equals(cpf)){
                                 System.out.println("The system already has these id");
                                 flag = -1;
                                 break;
@@ -66,16 +68,16 @@ public class TextInterface {
                     }
                     break;
                 case 2:
-                    System.out.println("Enter the employee cpf(id):");
+                    System.out.println("Enter the employee cpf:");
                     String id = scanner.next();
-                    data.employees.removeIf(employee -> employee.cpf.equals(id));
+                    data.employees.removeIf(employee -> employee.getCpf().equals(id));
 
                     break;
                 case 3:
-                    System.out.println("Enter the employee cpf(id)");
+                    System.out.println("Enter the employee cpf");
                     input = scanner.next();
                     for (Employee employee : data.employees) {
-                        if (employee.cpf == input && employee instanceof Hourly){
+                        if (employee.getCpf().equals(input)  && employee instanceof Hourly){
                             System.out.println("Enter the worked hours");
                             intInput = scanner.nextInt();
                             ((Hourly)employee).postTimeCard(intInput);
@@ -83,8 +85,15 @@ public class TextInterface {
                     }
                     break;
                 case 4:
-
-
+                    System.out.println("Enter the employee cpf");
+                    input = scanner.next();
+                    for (Employee employee : data.employees) {
+                        if (employee.getCpf().equals(input)  && employee instanceof Commissioned){
+                            System.out.println("Enter the sales ");
+                            doubleInput = scanner.nextDouble();
+                            ((Commissioned) employee).postSalesResult(doubleInput);
+                        }
+                    }
                     break;
                 case 5:
 
@@ -140,7 +149,7 @@ public class TextInterface {
     }
 
     public static void welcome(){
-        System.out.print("""
+        System.out.println("""
                 __          __  _                            _                      \s
                      \\ \\        / / | |                          | |                     \s
                       \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___  | |_ ___                \s
@@ -154,6 +163,6 @@ public class TextInterface {
                      | |  | (_| | |_| | | | (_) | | |  ____) | |_| \\__ \\ ||  __/ | | | | |
                      |_|   \\__,_|\\__, |_|  \\___/|_|_| |_____/ \\__, |___/\\__\\___|_| |_| |_|
                                   __/ |                        __/ |                     \s
-                                 |___/                        |___/                      \s\n""");
+                                 |___/                        |___/                      \s""");
     }
 }

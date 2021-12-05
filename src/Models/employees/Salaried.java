@@ -1,4 +1,4 @@
-package Models;
+package Models.employees;
 
 public class Salaried extends Employee {
     private double salary;
@@ -12,11 +12,11 @@ public class Salaried extends Employee {
     }
 
     public void pay(){
-        System.out.println("The employee " + this.name +" has been payed in: R$" + salary);
+        System.out.println("The employee " + this.getName() +" has been payed in: R$" + salary);
     }
 
     @Override
     public String toString(){
-        return super.name+ " " + super.address + " " +super.cpf;
+        return super.getName()+ " " + super.getAddress() + " " +super.getCpf();
     }
 }
