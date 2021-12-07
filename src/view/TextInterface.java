@@ -95,11 +95,71 @@ public class TextInterface {
                         }
                     }
                     break;
-                case 5:
-
+                case 5://post a service tax
+                    System.out.println("enter the employee cpf");
+                    input = scanner.next();
+                    for (Employee employee : data.employees) {
+                        if (employee.getCpf().equals(input)) {
+                            System.out.println("enter the sindical tax");
+                            doubleInput = scanner.nextDouble();
+                            employee.setSindicalTax(doubleInput);
+                            break;
+                        }
+                    }
                     break;
-                case 6:
+                case 6://Update employees detail
+                    int process= 1;
+                    while (process==1){
+                        System.out.println("enter the employee cpf");
+                        input = scanner.next();
+                        for (Employee employee : data.employees) {
+                            if (employee.getCpf().equals(input)){
+                                System.out.println("Do you want to change the employee's cpf?\n" +
+                                        "1 for yes\n" +
+                                        "0 for no");
+                                intInput = scanner.nextInt();
+                                if (intInput==1){
+                                    System.out.println("enter the employee's new cpf");
+                                    input = scanner.next();
+                                    employee.setCpf(input);
+                                    System.out.println("the employee cpf was successfully updated to "+employee.getCpf());
+                                }
 
+                                System.out.println("the employee's name is " + employee.getName());
+                                System.out.println("Do you want to change the employee's name?\n" +
+                                        "1 for yes\n" +
+                                        "0 for no");
+                                intInput = scanner.nextInt();
+                                if (intInput==1){
+                                    System.out.println("enter the employee's new name");
+                                    input = scanner.next();
+                                    employee.setName(input);
+                                    System.out.println("the employee name was successfully updated to " +employee.getName());
+                                }
+
+                                System.out.println("the employee's address is " + employee.getAddress());
+                                System.out.println("Do you want to change the employee's address?\n" +
+                                        "1 for yes\n" +
+                                        "0 for no");
+                                intInput = scanner.nextInt();
+                                if (intInput==1){
+                                    System.out.println("enter the employee's new name");
+                                    input = scanner.next();
+                                    employee.setName(input);
+                                    System.out.println("the employee name was successfully updated to "+ employee.getAddress() );
+                                }
+
+                                process=0;
+                                break;
+                            }
+                        }
+                    }
+
+                    process = 1;
+                    while(process==1){
+                        System.out.println("Do you want to change the name");
+                        process = 0;
+                    }
                     break;
                 case 7:
 
