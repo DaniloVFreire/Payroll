@@ -1,15 +1,12 @@
 package view;
 
-import Models.employees.Commissioned;
 import Models.employees.Employee;
-import Models.employees.Hourly;
-import Models.employees.Salaried;
+import data.DataManager;
 
 import java.util.Scanner;
 import java.util.Stack;
 
-import controller.EmployeesController;
-import data.DataManager;
+import static controller.EmployeesController.*;
 
 public class TextInterface {
     Stack<String> undo = new Stack<>();
@@ -18,162 +15,157 @@ public class TextInterface {
     public static void logicMenu(DataManager data) {
         welcome();
         Scanner scanner = new Scanner(System.in);
-        String input;
+        String input, cpf, name, address;
         int intInput;
         double doubleInput;
+        //short shortImput;
+        showFunctionalities();
         while (true) {
-            showFunctionalities();
             switch (scanner.nextInt()) {
+                case 0:
+                    showFunctionalities();
+                    break;
                 case 1:
                     System.out.println("Enter the employee's name");
-                    String nome = scanner.next();
+                    name = scanner.next();
 
                     System.out.println("Enter the employee's address:");
-                    String address = scanner.next();
-                    while (true) {
-                        System.out.print("""
+                    address = scanner.next();
+
+                    System.out.print("""
                                 Enter the employee's category :
                                 Hourly 1
                                 Salaried 2
                                 Commissioned 3
                                 """);
-                        int category = scanner.nextInt();
+                    short category = scanner.nextShort();
 
-                        System.out.println("Enter the employee's cpf(id) :");
-                        String cpf = scanner.next();
-                        int flag=0;
-                        for (Employee employee : data.employees) {
-                            if (employee.getCpf().equals(cpf)){
-                                System.out.println("The system already has these id");
-                                flag = -1;
-                                break;
-                            }
-                        }
-                        if(flag==-1){
-                            break;
-                        }
-                        else if (category == 1) {
-                            data.employees.add(new Hourly(nome, address, cpf));
-                            System.out.println("The employee was successfully added, it data is: " + data.employees.get(data.employees.size()-1).toString());
-                            break;
-                        } else if (category == 2) {
-                            data.employees.add(new Salaried(nome, address, cpf));
-                            System.out.println("The employee was successfully added, it data is: " + data.employees.get(data.employees.size()-1).toString());
-                            break;
-                        } else if (category == 3) {
-                            data.employees.add(new Commissioned(nome, address, cpf));
-                            System.out.println("The employee was successfully added, it data is: " + data.employees.get(data.employees.size()-1).toString());
-                            break;
-                        }
+                    System.out.println("Enter the employee's cpf(id) :");
+                    cpf = scanner.next();
+
+                    switch (createEmployee(data, name, address, cpf, category)) {
+                        case 1 -> System.out.println("This employee cpf is already in use");
+                        case 2 -> System.out.println("The employee's category does not exist");
+                        default -> System.out.println("Employee successfully added");
                     }
                     break;
                 case 2:
                     System.out.println("Enter the employee cpf:");
-                    String id = scanner.next();
-                    data.employees.removeIf(employee -> employee.getCpf().equals(id));
+                    input = scanner.next();
 
+                    if (deleteEmployee(data, input) == 1) {
+                        System.out.println("Don't exist any Employee with the described cpf");
+                    } else {
+                        System.out.println("Deletion Successfully executed");
+                    }
                     break;
                 case 3:
                     System.out.println("Enter the employee cpf");
                     input = scanner.next();
-                    for (Employee employee : data.employees) {
-                        if (employee.getCpf().equals(input)  && employee instanceof Hourly){
-                            System.out.println("Enter the worked hours");
-                            intInput = scanner.nextInt();
-                            ((Hourly)employee).postTimeCard(intInput);
-                        }
+
+                    System.out.println("Enter the worked hours");
+                    intInput = scanner.nextInt();
+
+                    switch (postTimeCard(data, input, intInput)){
+                        case 1-> System.out.println("Don't exist any Employee with the described cpf");
+                        case 2-> System.out.println("The select Employee is not an Hourly");
+                        default -> System.out.println("Time card successfully posted");
                     }
                     break;
                 case 4:
-                    System.out.println("Enter the employee cpf");
+                    System.out.println("Enter the employee cpf:");
                     input = scanner.next();
-                    for (Employee employee : data.employees) {
-                        if (employee.getCpf().equals(input)  && employee instanceof Commissioned){
-                            System.out.println("Enter the sales ");
-                            doubleInput = scanner.nextDouble();
-                            ((Commissioned) employee).postSalesResult(doubleInput);
-                        }
+
+                    System.out.println("Enter the sales value:");
+                    doubleInput = scanner.nextDouble();
+
+                    switch (postSalesResult(data, input, doubleInput)){
+                        case 1-> System.out.println("Don't exist any Employee with the described cpf");
+                        case 2-> System.out.println("The select Employee is not an Commissioned");
+                        default -> System.out.println("Time card successfully posted");
                     }
                     break;
-                case 5://post a service tax
+                case 5:
                     System.out.println("enter the employee cpf");
                     input = scanner.next();
-                    for (Employee employee : data.employees) {
-                        if (employee.getCpf().equals(input)) {
-                            System.out.println("enter the sindical tax");
-                            doubleInput = scanner.nextDouble();
-                            employee.setSindicalTax(doubleInput);
-                            break;
-                        }
+
+                    System.out.println("enter the sindical tax");
+                    doubleInput = scanner.nextDouble();
+
+                    postServiceTax(data, input, doubleInput);
+
+                    if (postServiceTax(data, input, doubleInput) == 1) {
+                        System.out.println("Don't exist any Employee with the described cpf");
+                    } else {
+                        System.out.println("Service tax successfully posted");
                     }
                     break;
-                case 6://Update employees detail
-                    int process= 1;
-                    while (process==1){
+                case 6:
                         System.out.println("enter the employee cpf");
                         input = scanner.next();
-                        for (Employee employee : data.employees) {
-                            if (employee.getCpf().equals(input)){
-                                System.out.println("Do you want to change the employee's cpf?\n" +
-                                        "1 for yes\n" +
-                                        "0 for no");
-                                intInput = scanner.nextInt();
-                                if (intInput==1){
-                                    System.out.println("enter the employee's new cpf");
-                                    input = scanner.next();
-                                    employee.setCpf(input);
-                                    System.out.println("the employee cpf was successfully updated to "+employee.getCpf());
-                                }
 
-                                System.out.println("the employee's name is " + employee.getName());
-                                System.out.println("Do you want to change the employee's name?\n" +
-                                        "1 for yes\n" +
-                                        "0 for no");
-                                intInput = scanner.nextInt();
-                                if (intInput==1){
-                                    System.out.println("enter the employee's new name");
-                                    input = scanner.next();
-                                    employee.setName(input);
-                                    System.out.println("the employee name was successfully updated to " +employee.getName());
-                                }
+                        System.out.println("""
+                                Do you want to change the employee's cpf?
+                                1 for yes
+                                0 for no""");
+                        intInput = scanner.nextInt();
 
-                                System.out.println("the employee's address is " + employee.getAddress());
-                                System.out.println("Do you want to change the employee's address?\n" +
-                                        "1 for yes\n" +
-                                        "0 for no");
-                                intInput = scanner.nextInt();
-                                if (intInput==1){
-                                    System.out.println("enter the employee's new name");
-                                    input = scanner.next();
-                                    employee.setName(input);
-                                    System.out.println("the employee name was successfully updated to "+ employee.getAddress() );
-                                }
-
-                                process=0;
-                                break;
-                            }
+                        if (intInput==1){
+                            System.out.println("enter the employee's new cpf");
+                            cpf = scanner.next();
                         }
-                    }
+                        else{
+                            cpf = "-1";
+                        }
+                        intInput=0;
 
-                    process = 1;
-                    while(process==1){
-                        System.out.println("Do you want to change the name");
-                        process = 0;
-                    }
+                        System.out.println("""
+                                Do you want to change the employee's name?
+                                1 for yes
+                                0 for no""");
+                        intInput = scanner.nextInt();
+                        if (intInput==1){
+                            System.out.println("enter the employee's new name");
+                            name = scanner.next();
+                        }
+                        else{
+                            name ="-1";
+                        }
+
+                        System.out.println("""
+                                Do you want to change the employee's address?
+                                1 for yes
+                                0 for no""");
+
+                        intInput = scanner.nextInt();
+                        if (intInput==1){
+                            System.out.println("enter the employee's new address:");
+                            address = scanner.next();
+                        }
+                        else{
+                            address="-1";
+                        }
+
+                        if(updateEmployee(data, input, cpf, name, address) == 1){
+                            System.out.println("Don't exist any Employee with the described cpf");
+                        }
+                        else{
+                            System.out.println("Time card successfully posted");
+                        }
                     break;
                 case 7:
+                    runTodaysPayroll(data);
+                    break;
+                case 8://undo
+                    
+                    break;
+                case 9://redo
 
                     break;
-                case 8:
+                case 10://change payment method
 
                     break;
-                case 9:
-
-                    break;
-                case 10:
-
-                    break;
-                case 11:
+                case 11://to create a new payment
 
                     break;
                 case 12:
@@ -192,6 +184,7 @@ public class TextInterface {
     public static void showFunctionalities(){
         System.out.print("""
                     Functionalities
+                    0 to see the options
                     1 to add an Employee
                     2 to remove an Employee
                     3 to post a time card

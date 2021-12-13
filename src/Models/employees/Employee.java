@@ -60,4 +60,6 @@ public abstract class Employee {
     public String toString(){
         return this.name + this.address + this.cpf;
     }
+
+    public abstract void pay();
 }
