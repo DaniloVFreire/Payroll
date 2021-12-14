@@ -93,6 +93,7 @@ public class EmployeesController {
 
     public static short createEmployee(DataManager data, String name, String address, String cpf, short type){
         cpf = validateAndFormatCpf(cpf);
+        System.out.println(cpf);
         if(findEmployeeByCpf(data, cpf)==null){
             switch (type){
                 case 1:
@@ -117,7 +118,7 @@ public class EmployeesController {
 
     public static String validateAndFormatCpf(String cpf){
         String newCpf = cpf.replaceAll(" ", "");
-        newCpf = newCpf.replaceAll(".", "");
+        newCpf = newCpf.replaceAll("\\.", "");
         return newCpf;
     }
 

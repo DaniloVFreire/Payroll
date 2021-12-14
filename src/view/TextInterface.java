@@ -7,13 +7,15 @@ import java.util.Scanner;
 import java.util.Stack;
 
 import static controller.EmployeesController.*;
+import static controller.Controller.*;
 
 public class TextInterface {
-    Stack<String> undo = new Stack<>();
-    Stack<String> redo = new Stack<>();
-
     public static void logicMenu(DataManager data) {
         welcome();
+        Stack<String> undo = new Stack<>();
+        Stack<String> redo = new Stack<>();
+
+        DataManager example;
         Scanner scanner = new Scanner(System.in);
         String input, cpf, name, address;
         int intInput;
@@ -21,7 +23,12 @@ public class TextInterface {
         //short shortImput;
         showFunctionalities();
         while (true) {
-            switch (scanner.nextInt()) {
+            intInput = scanner.nextInt();
+            if((intInput >= 1) && (intInput<=7) || (intInput>=10) && (intInput <= 11)){
+                System.out.println("push");
+                undo.push(storeState(data));
+            }
+            switch (intInput) {
                 case 0:
                     showFunctionalities();
                     break;
@@ -157,13 +164,27 @@ public class TextInterface {
                     runTodaysPayroll(data);
                     break;
                 case 8://undo
-                    
+                    example = undo(data, undo, redo);
+                    if (example==null){
+                        System.out.println("Stack is clear, you cant undo");
+                    }
+                    else{
+                        data = example;
+                        System.out.println("Redo successfully applied");
+                    }
                     break;
                 case 9://redo
-
+                    example = redo(data, undo, redo);
+                    if (example==null){
+                        System.out.println("Stack is clear, you cant undo");
+                    }
+                    else{
+                        data = example;
+                        System.out.println("Redo successfully applied");
+                    }
                     break;
                 case 10://change payment method
-
+                    
                     break;
                 case 11://to create a new payment
 
@@ -184,20 +205,20 @@ public class TextInterface {
     public static void showFunctionalities(){
         System.out.print("""
                     Functionalities
-                    0 to see the options
-                    1 to add an Employee
-                    2 to remove an Employee
-                    3 to post a time card
-                    4 to post a sales result
-                    5 to post a service tax
-                    6 to change a Employee's details
-                    7 to run payroll for today
-                    8 to undo
-                    9 to redo
+                    0 To see the options
+                    1 To add an Employee
+                    2 To remove an Employee
+                    3 To post a time card
+                    4 To post a sales result
+                    5 To post a service tax
+                    6 To change a Employee's details
+                    7 To run payroll for today
+                    8 To undo
+                    9 To redo
                     10 To change the payment schedule
                     11 To create a new payment schedule
-                    12 See employees data
-                    13 to exit
+                    12 To See employees data
+                    13 To exit
                     """);
     }
 

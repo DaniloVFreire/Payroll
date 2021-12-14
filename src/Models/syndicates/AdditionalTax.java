@@ -1,8 +1,9 @@
 package Models.syndicates;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class AdditionalTax {
+public class AdditionalTax implements Serializable {
     private LocalDate date;
     private Double value;
 

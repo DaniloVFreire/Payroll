@@ -2,9 +2,10 @@ package Models.employees;
 
 import Models.syndicates.Syndicate;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public abstract class Employee {
+public abstract class Employee implements Serializable {
     private final UUID id;
     private String name;
     private String address;

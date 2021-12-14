@@ -1,9 +1,10 @@
 package Models.salesResults;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 
-public class SaleResult {
+public class SaleResult implements Serializable {
     double saleValue;
     LocalDate date;
 
