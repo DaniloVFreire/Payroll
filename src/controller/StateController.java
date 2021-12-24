@@ -2,7 +2,6 @@ package controller;
 
 import data.DataManager;
 
-import javax.xml.crypto.Data;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -10,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.Base64;
 import java.util.Stack;
 
-public class Controller {
+public class StateController {
     public static DataManager undo(DataManager data, Stack<String> undo, Stack<String> redo){
         if(!undo.isEmpty()){
             redo.push(storeState(data));

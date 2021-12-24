@@ -1,10 +1,23 @@
 package Models.employees;
 
+import Models.payment.PaymentSchedule;
+import Models.syndicates.Syndicate;
+
 public class Salaried extends Employee {
     private double salary;
-    public Salaried(String _name, String _address, String _cpf){
-        super(_name, _address, _cpf);
-        salary = 1000;
+
+    public Salaried(String _name, String _address, String _cpf, PaymentSchedule _paymentSchedule ,String _paymentMethod, double _salary){
+        super(_name, _address, _cpf, _paymentSchedule, _paymentMethod);
+        salary = _salary;
+    }
+
+    public Salaried(String _name, String _address, String _cpf, PaymentSchedule _paymentSchedule ,String _paymentMethod, double _salary, Syndicate _syndicate){
+        super(_name, _address, _cpf, _paymentSchedule, _paymentMethod,_syndicate);
+        salary = _salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public void salaryDefinition(double _salary){

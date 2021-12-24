@@ -6,7 +6,13 @@ import java.util.UUID;
 
 public class Syndicate implements Serializable {
     private UUID SyndicateId;
-    private double tax;
-    private ArrayList<AdditionalTax> additionalTaxes ;
-
+    private double basetax;
+    private ArrayList<AdditionalTax> additionalTaxes;
+    public Syndicate(double _baseTax){
+        this.SyndicateId = UUID.randomUUID();
+        this.basetax = _baseTax;
+    }
+    public void setAdditionalTaxes(AdditionalTax additionalTax) {
+        this.additionalTaxes.add(additionalTax);
+    }
 }
