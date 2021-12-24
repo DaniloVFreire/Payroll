@@ -98,7 +98,12 @@ public class EmployeesController {
             return 1;
         }
         else{
-            selected.setSindicalTax(value);
+            if (selected.getSyndicate() !=null){
+                selected.setSindicalTax(value);
+            }
+            else{
+                return 2;
+            }
         }
         return 0;
     }

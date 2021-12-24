@@ -11,6 +11,7 @@ public class Syndicate implements Serializable {
     public Syndicate(double _baseTax){
         this.SyndicateId = UUID.randomUUID();
         this.basetax = _baseTax;
+        additionalTaxes = new ArrayList<>();
     }
     public void setAdditionalTaxes(AdditionalTax additionalTax) {
         this.additionalTaxes.add(additionalTax);

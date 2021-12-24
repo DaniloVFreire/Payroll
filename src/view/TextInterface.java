@@ -131,7 +131,7 @@ public class TextInterface {
                     switch (postSalesResult(data, input, doubleInput)) {
                         case 1 -> System.out.println("Don't exist any Employee with the described cpf");
                         case 2 -> System.out.println("The select Employee is not an Commissioned");
-                        default -> System.out.println("Time card successfully posted");
+                        default -> System.out.println("Sales result successfully posted");
                     }
                     break;
                 case 5:// post an additional syndicalist tax
@@ -141,13 +141,13 @@ public class TextInterface {
                     System.out.println("enter the syndicalist tax");
                     doubleInput = scanner.nextDouble();
 
-                    postServiceTax(data, input, doubleInput);
-
                     if (postServiceTax(data, input, doubleInput) == 1) {
                         System.out.println("Don't exist any Employee with the described cpf");
+                    } else if(postServiceTax(data, input, doubleInput) == 2){
+                        System.out.println("The Employee does not have an syndicate");
                     } else {
-                        System.out.println("Service tax successfully posted");
-                    }
+                    System.out.println("Service tax successfully posted");
+                }
                     break;
                 case 6://Update employee
 
@@ -199,9 +199,9 @@ public class TextInterface {
                             0 for no""");
                     intInput = scanner.nextInt();
                     if (intInput == 1) {
-                        System.out.println("Select the payment method" +
-                                "1 check by post" +
-                                "2 check in hands" +
+                        System.out.println("Select the payment method\n" +
+                                "1 check by post\n" +
+                                "2 check in hands\n" +
                                 "3 bank account deposit");
                         paymentMethod = scanner.nextShort();
                     } else {
@@ -266,6 +266,7 @@ public class TextInterface {
                                 Do you want to leave a Syndicate?
                                 1 for yes
                                 0 for no""");
+                        intInput = scanner.nextInt();
                         if (intInput == 1) {
                             haveSyndicate = -1;
                         } else {
