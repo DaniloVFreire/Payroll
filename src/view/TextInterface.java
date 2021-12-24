@@ -6,6 +6,7 @@ import Models.employees.Hourly;
 import Models.employees.Salaried;
 import data.DataManager;
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -20,10 +21,10 @@ public class TextInterface {
         Stack<String> redo = new Stack<>();
 
         DataManager example;
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         String input, cpf, name, address;
         int intInput;
-        double doubleInput, commission, tax = -1;
+        double doubleInput, commission, tax = -1.0;
         short shortInput, haveSyndicate = -1;
         Employee selectedEmployee = null;
         showFunctionalities();
@@ -71,20 +72,20 @@ public class TextInterface {
                                 "Obs it should be less than 1 and bigger then 0.000");
                         commission = scanner.nextDouble();
                     }
-                    System.out.println("Select the payment method" +
-                            "1 check by post" +
-                            "2 check in hands" +
+                    System.out.println("Select the payment method\n" +
+                            "1 check by post\n" +
+                            "2 check in hands\n" +
                             "3 bank account deposit");
                     short paymentMethod = scanner.nextShort();
 
                     //Syndicate information
-                    System.out.println("The employee is a syndicate participant?" +
-                            "1 for yes" +
+                    System.out.println("The employee is a syndicate participant?\n" +
+                            "1 for yes\n" +
                             "0 for no");
                     haveSyndicate = scanner.nextShort();
                     tax = -1;
                     if (haveSyndicate == 1) {
-                        System.out.println("enter the syndicalist tax(percentage)" +
+                        System.out.println("enter the syndicalist tax(percentage)\n" +
                                 "Obs it should be less than 1 and bigger then 0.000");
                         tax = scanner.nextDouble();
                     }

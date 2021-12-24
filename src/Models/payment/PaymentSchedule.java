@@ -1,9 +1,10 @@
 package Models.payment;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.UUID;
 
-public class PaymentSchedule {
+public class PaymentSchedule implements Serializable {
     private int day;
     private int frequency;
     private int weekDay;

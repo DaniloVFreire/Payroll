@@ -26,12 +26,12 @@ a corporate payroll system** that includes:
 |     2    |  Remove an employee            |:white_check_mark:
 |     3    |  Post a time card              |:white_check_mark:
 |     4    |  Post sales result             |:white_check_mark:
-|     5    |  Post a service tax            |:white_large_square:
-|     6    |  Update employee details       |:white_large_square:
+|     5    |  Post a service tax            |:white_check_mark:
+|     6    |  Update employee details       |:white_check_mark:
 |     7    |  Run today's payroll           |:white_large_square:
-|     8    |  Undo/Redo                     |:white_large_square:
-|     9    |  Schedule payment              |:white_large_square:
-|    10    |  Create a new payment Schedule |:white_large_square:
+|     8    |  Undo/Redo                     |:white_check_mark:
+|     9    |  Schedule payment              |:white_check_mark:
+|    10    |  Create a new payment Schedule |:white_check_mark:
 ---
 
 ## UML Diagram
